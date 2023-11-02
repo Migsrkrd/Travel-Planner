@@ -5,11 +5,8 @@ const { Location, Trip } = require('../../models');
 
 router.get('/', async (req, res) => {
   try{
-    const categories = await Category.findAll({
-      include: [{
-        model: Product}]
-    });
-    res.json(categories);
+    const userData = await Location.findAll();
+    res.json(userData);
   } catch (err) {
     res.status(500).json({err: 'Internal Server Error'})
     console.error(err);
